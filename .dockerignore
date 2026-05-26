@@ -1,0 +1,13 @@
+**/.git
+**/.vs
+**/.idea
+**/.cursor
+**/bin
+**/obj
+**/*.db
+**/*.db-shm
+**/*.db-wal
+data/
+src/Api/data/
+README.md
+docs/
