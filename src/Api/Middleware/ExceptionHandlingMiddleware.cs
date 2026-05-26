@@ -40,7 +40,7 @@ public class ExceptionHandlingMiddleware
         catch (RegraNegocioException ex)
         {
             _logger.LogWarning("Regra de negócio: {Message}", ex.Message);
-            await WriteErrorAsync(context, HttpStatusCode.BadRequest, new ErrorResponse
+            await WriteErrorAsync(context, HttpStatusCode.Conflict, new ErrorResponse
             {
                 Success = false,
                 Message = ex.Message

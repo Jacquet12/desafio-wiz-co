@@ -80,7 +80,8 @@ Pode ser feito por URL (`/api/v1/pedidos`), headers ou query string. URL costuma
 
 * **200** — sucesso
 * **201** — recurso criado
-* **400** — erro de validação ou regra de negócio
+* **400** — erro de validação
+* **409** — conflito de regra de negócio
 * **401** — não autenticado
 * **403** — sem permissão
 * **404** — recurso não encontrado

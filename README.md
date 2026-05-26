@@ -46,6 +46,10 @@ docker-compose.yml
 
 Status: `Novo`, `Pago`, `Cancelado`.
 
+Esta API implementa exatamente os endpoints solicitados no case: `POST /pedidos`, `GET /pedidos/{id}`, `GET /pedidos` (com `status`, `page` e `pageSize`) e `PUT /pedidos/{id}/cancelar`.
+O `StatusPedido.Pago` existe no domínio apenas para suportar a regra de negócio “pedido pago não pode ser cancelado”; por isso não foi criado endpoint de pagamento (fora do escopo do case).
+JWT não foi implementado porque não era requisito do case; fica como melhoria futura opcional.
+
 ## Exemplo — criar pedido
 
 ```json
@@ -87,17 +91,15 @@ dotnet test
 
 14 testes unitários (domínio, validators, service).
 
-## Decisões
+## Decisões técnicas
 
-- **EF Core + SQLite:** atende o case sem infra extra.
-- **Camadas separadas:** domínio testável, sem MediatR/CQRS (poucos endpoints).
-- **ValorTotal no domínio:** não confiar no cliente.
-- **Middleware de erro:** respostas padronizadas, controller enxuto.
-- **JWT:** fora do PDF; pode ser adicionado depois.
-
-## Melhorias futuras
-
-JWT, endpoint de pagamento, testes de integração, versionamento da API, CI/CD.
+- ValorTotal é calculado no backend e nunca recebido do cliente.
+- SQLite foi usado por simplicidade de execução e por ser banco relacional.
+- EF Core foi usado pela produtividade com CRUD, relacionamento Pedido/ItemPedido e migrations.
+- Clean Architecture foi usada de forma simplificada para separar responsabilidades.
+- Middleware global centraliza erros e mantém controllers limpos.
+- Não foi criado endpoint de pagamento porque está fora do escopo do case.
+- Não foi implementado JWT porque não era requisito obrigatório nem diferencial do PDF.
 
 ## Teoria
 
