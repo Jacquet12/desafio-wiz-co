@@ -23,9 +23,6 @@ bld/
 .idea/
 *.swp
 *~
-.cursor/
-docs.pdf
-*.pdf
 
 ## SQLite / dados locais
 data/*

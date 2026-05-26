@@ -1,7 +1,6 @@
 **/.git
 **/.vs
 **/.idea
-**/.cursor
 **/bin
 **/obj
 **/*.db
